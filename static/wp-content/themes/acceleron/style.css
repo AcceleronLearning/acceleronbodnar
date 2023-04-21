@@ -1,0 +1,58 @@
+/*
+Theme Name: Acceleron Learning
+Theme URI: https://wonderfoundry.com
+Description: Child Theme for Acceleron Learning on Pivot Theme
+Author: Onur Demir
+Author URI: https://onurdemir.com
+Template: pivot
+Version: 1.0.0
+*/
+
+@import url('../pivot/style.css');
+
+.zpdf-iframe {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    max-width: 100vw !important;
+}
+
+.zpdf .article-body {
+    overflow: inherit;
+    padding-bottom: 0;
+}
+
+.zpdf section.duplicatable-content {
+    padding-bottom: 0;
+}
+
+.zpdf .article-body header.title {
+    margin-bottom: 0;
+}
+
+div[id^='zpdf']::before,
+.zpdf-iframe::before,
+.clearfix::before {
+    content: " ";
+    display: table;
+}
+
+div[id^='zpdf']::after,
+.zpdf-iframe::after,
+.clearfix::after  {
+    clear: both;
+    content: " ";
+    display: table;
+}
+
+.zpdf-iframe,
+div[id^='zpdf'] {
+    min-height: 1200px;
+}
+
+.zpdf .row {
+
+}
