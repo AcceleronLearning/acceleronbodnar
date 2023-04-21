@@ -39,7 +39,7 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/'
+          BASE_PATH: ''
         run: |
           pnpm build
           touch build/.nojekyll
