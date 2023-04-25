@@ -23,14 +23,14 @@ const config = {
             assets: 'build',
             fallback: 'index.html',
             precompress: false,
-            strict: true
+            strict: false
         }),
 		paths: {
             base: dev ? '' : process.env.BASE_PATH || '',
         },
 		prerender:{
-		  crawl:true,
-		  entries: ["*", "/", "/reentry", "/open", "/release","/refocus","/about","/terms-of-use","/nudge-bug-terms","/full_tos","/tos"],
+		  crawl:false,
+		  entries: ["/", "/reentry", "/open", "/release","/refocus","/about","/terms-of-use","/nudge-bug-terms","/full_tos","/tos"],
 		  handleHttpError: 'warn'
 		  // handleHttpError: ({ path, referrer, message }) => {
 		  //     // ignore deliberate link to shiny 404 page

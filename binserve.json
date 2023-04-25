@@ -1,0 +1,43 @@
+{
+    "server": {
+        "host": "127.0.0.1:1337",
+        "tls": {
+            "host": "127.0.0.1:443",
+            "enable": false,
+            "key": "key.pem",
+            "cert": "cert.pem"
+        }
+    },
+    "routes": {
+        "/": "build/index.html",
+        "/open": "build/index.html",
+        "/reentry": "build/index.html",
+        "/release": "build/index.html",
+        "/refocus": "build/index.html",
+        "/about": "build/index.html",
+        "/terms-of-use": "build/index.html",
+        "/nudge-bug-terms": "build/index.html",
+        "/full_tos": "build/index.html",
+        "/tos": "build/index.html",
+        "/*/": "build/index.html"
+    },
+
+    "static": {
+        "directory": "build",
+        "served_from": "/"
+    },
+
+    "config": {
+        "enable_hot_reload": true,
+        "fast_mem_cache": true,
+        "enable_cache_control": true,
+        "enable_directory_listing": true,
+        "minify_html": false,
+        "follow_symlinks": false,
+        "enable_logging": false
+    },
+
+    "insert_headers": {
+        "x-greetings": "hellooo!"
+    }
+}

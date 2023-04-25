@@ -9,6 +9,7 @@ export const prerender = false;
 // This is not the case (so set as true or comment the line)
 // Documentation: https://kit.svelte.dev/docs/page-options#ssr
 export const ssr = false;
+export const csr = true;
 
 // How to manage the trailing slashes in the URLs
 // the URL for about page witll be /about with 'ignore' (default)
