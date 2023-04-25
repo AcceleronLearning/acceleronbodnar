@@ -2,7 +2,7 @@
 // for your page.
 // Documentation: https://kit.svelte.dev/docs/page-options#prerender
 //export const prerender = true;
-export const prerender = false;
+export const prerender = true;
 
 // if you want to Generate a SPA
 // you have to set ssr to false.
@@ -15,4 +15,4 @@ export const csr = true;
 // the URL for about page witll be /about with 'ignore' (default)
 // the URL for about page witll be /about/ with 'always'
 // https://kit.svelte.dev/docs/page-options#trailingslash
-export const trailingSlash = 'ignore';
+export const trailingSlash = 'always';

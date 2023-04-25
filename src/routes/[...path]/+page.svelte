@@ -1,60 +1,61 @@
 <script lang="ts">
-	import { getContent, RenderContent, getBuilderSearchParams, convertSearchParamsToQueryObject } from '@builder.io/sdk-svelte';
+	import { getContent, RenderContent, getBuilderSearchParams, convertSearchParamsToQueryObject, isPreviewing } from '@builder.io/sdk-svelte';
 	//import { isPreviewing, getContent, RenderContent, getBuilderSearchParams, convertSearchParamsToQueryObject } from '@builder.io/sdk-svelte';
 	//import { page } from '$app/stores';
 
-
-	import Counter from '../../lib/Counter.svelte';
-	// import Tile from '../../lib/Tile.svelte';
-	import Portfolio from '../../lib/Portfolio.svelte';
 	import ProjectBlock from '../../lib/ProjectBlockComponent.svelte';
 	import ContactForm from '../../lib/ContactForm.svelte';
 	// import Header from '../../lib/Header.svelte'
 	import Footer from '../../lib/Footer.svelte';
 	import Spinner from '../../lib/Spinner.svelte';
-
-
 	import { page } from '$app/stores';
-	//import { variables } from '$lib/variables';
-	//import CustomComponents from '../components'
 
 	import * as BuilderSDK from '@builder.io/sdk-svelte';
 	import { set_data_contenteditable_dev } from 'svelte/internal';
 
 	const BUILDER_PUBLIC_API_KEY = `cf3837b112bb44ff839785f693ff995c`
 
+	// Create an array of your custom components and their properties
 	const CUSTOM_COMPONENTS = [
+		{
+			component: Spinner,
+			name: 'Spinner',
+			inputs: []
+		},
+		{
+			component: ProjectBlock,
+			name: 'ProjectBlock',
+			inputs: [
+				{
+					name: 'title',
+					type: 'string',
+					defaultValue: 'Career | Financial | Legal | Wellness <br />for Everyone'
+				}
+			]
+		},
+		{
+			component: ContactForm,
+			name: 'ContactForm',
+			inputs: [
+			]
+		},
+		{
+			component: Footer,
+			name: 'Footer',
+			inputs: [
+			]
+		}
 	];
 
-	let content: any = undefined;
-	let canShowContent = false;
-	const fetch = async () => {
-		content = await BuilderSDK.getContent({
-			model: 'page',
-			apiKey: 'cf3837b112bb44ff839785f693ff995c',
-			options: BuilderSDK.getBuilderSearchParams(
-				BuilderSDK.convertSearchParamsToQueryObject($page.url.searchParams)
-			),
-			userAttributes: {
-				urlPath: $page.url.pathname
-			}
-		});
-		canShowContent = content || BuilderSDK.isEditing();
-	};
-
-	fetch();
-
+	// this data comes from the function in `+page.server.js`, which runs on the server only
 	export let data;
 
-	console.log(data, set_data_contenteditable_dev)
+	// we want to show unpublished content when in preview mode.
+	const canShowContent = data.content || isPreviewing();
+
+	//console.log(data, $page.url, set_data_contenteditable_dev)
 </script>
 
-
-<svelte:head>
-	<!-- <Spinner></Spinner> -->
-	<!-- <div>page Title: {data.content?.data?.title || 'Unpublished'}</div> -->
-	<title></title>
-</svelte:head>
 
 <main>
 	<!-- <div class="loader">
@@ -71,7 +72,7 @@
 			{#if canShowContent}
 			<RenderContent
 				model="page"
-				{content}
+				content={data.content}
 				apiKey={BUILDER_PUBLIC_API_KEY}
 				customComponents={CUSTOM_COMPONENTS}
 			/>
@@ -101,26 +102,3 @@
 	</div>
 	<!-- <Footer /> -->
 </main>
-
-<!-- <style>
-	h1 {
-		width: 100%;
-		font-size: 2rem;
-		text-align: center;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
-	}
-</style> -->
-
