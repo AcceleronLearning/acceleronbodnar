@@ -22,9 +22,7 @@ const config = {
 			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			fallback: null,
-			precompress: false,
-			strict: false
+			fallback: null
 		}),
 		paths: {
 			base: dev ? '' : process.env.BASE_PATH || ''

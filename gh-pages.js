@@ -9,7 +9,8 @@ publish(
         user: {
             name: 'Daniel Bodnar', // update to use your name
             email: 'daniel.bodnar@gmail.com' // Update to use your email
-        }
+        },
+        dotfiles: true
     },
     () => {
         console.log('Deploy Complete!')
