@@ -1,6 +1,7 @@
 //import adapter from '@sveltejs/adapter-auto';
 
 //import adapter from 'svelte-adapter-deno';
+import preprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
@@ -17,31 +18,43 @@ const config = {
 		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter({
-            // default options are shown. On some platforms
-            // these options are set automatically — see below
-            pages: 'build',
-            assets: 'build',
-            fallback: 'index.html',
-            precompress: false,
-            strict: false
-        }),
+			// default options are shown. On some platforms
+			// these options are set automatically — see below
+			pages: 'build',
+			assets: 'build',
+			fallback: null,
+			precompress: false,
+			strict: false
+		}),
 		paths: {
-            base: dev ? '' : process.env.BASE_PATH || '',
-        },
-		prerender:{
-		  crawl:false,
-		  entries: ["/", "/reentry", "/open", "/release","/refocus","/about","/terms-of-use","/nudge-bug-terms","/full_tos","/tos"],
-		  handleHttpError: 'warn'
-		  // handleHttpError: ({ path, referrer, message }) => {
-		  //     // ignore deliberate link to shiny 404 page
-		  //     if (path === '/not-found' && referrer === '/blog/how-we-built-our-404-page') {
-		  //         return;
-		  //     }
-
-		  //     // otherwise fail the build
-		  //     throw new Error(message);
-		  // }
+			base: dev ? '' : process.env.BASE_PATH || ''
 		},
+		prerender: {
+			crawl: true,
+			entries: [
+				'/',
+				'/reentry',
+				'/open',
+				'/release',
+				'/refocus',
+				'/about',
+				'/terms-of-use',
+				'/nudge-bug-terms',
+				'/full_tos',
+				'/tos'
+			]
+			//,
+			//handleHttpError: 'warn'
+			// handleHttpError: ({ path, referrer, message }) => {
+			//     // ignore deliberate link to shiny 404 page
+			//     if (path === '/not-found' && referrer === '/blog/how-we-built-our-404-page') {
+			//         return;
+			//     }
+
+			//     // otherwise fail the build
+			//     throw new Error(message);
+			// }
+		}
 	}
 };
 
