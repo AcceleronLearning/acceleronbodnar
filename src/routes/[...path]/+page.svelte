@@ -1,18 +1,14 @@
 <script lang="ts">
-	import { getContent, RenderContent, getBuilderSearchParams, convertSearchParamsToQueryObject, isPreviewing } from '@builder.io/sdk-svelte';
-	//import { isPreviewing, getContent, RenderContent, getBuilderSearchParams, convertSearchParamsToQueryObject } from '@builder.io/sdk-svelte';
-	//import { page } from '$app/stores';
-
-	import ProjectBlock from '../../lib/ProjectBlockComponent.svelte';
-	import ContactForm from '../../lib/ContactForm.svelte';
-	// import Header from '../../lib/Header.svelte'
-	import Footer from '../../lib/Footer.svelte';
-	import Spinner from '../../lib/Spinner.svelte';
+	import { isPreviewing, getContent, RenderContent, getBuilderSearchParams, convertSearchParamsToQueryObject } from '@builder.io/sdk-svelte';
 	import { page } from '$app/stores';
 
-	import * as BuilderSDK from '@builder.io/sdk-svelte';
-	import { set_data_contenteditable_dev } from 'svelte/internal';
+	import ContactForm from '$lib/ContactForm.svelte';
+	import ProjectBlock from '$lib/ProjectBlockComponent.svelte';
+// import Header from '$lib/Header.svelte'
+	import Footer from '$lib/Footer.svelte';
+	import Spinner from '$lib/Spinner.svelte';
 
+	
 	const BUILDER_PUBLIC_API_KEY = `cf3837b112bb44ff839785f693ff995c`
 
 	// Create an array of your custom components and their properties
@@ -76,6 +72,7 @@
 				apiKey={BUILDER_PUBLIC_API_KEY}
 				customComponents={CUSTOM_COMPONENTS}
 			/>
+			
 			{:else}
 				<!-- <Portfolio /> -->
 			{/if}

@@ -3,6 +3,13 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	plugins: [sveltekit()],
+  build: {
+    rollupOptions: {
+      // external: [
+      //   /pivot-theme*/,
+      // ]
+    }
+  },
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
